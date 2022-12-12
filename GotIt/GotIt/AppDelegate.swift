@@ -7,30 +7,73 @@
 
 import UIKit
 
-@main
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
-    }
-
-    // MARK: UISceneSession Lifecycle
-
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-
-
+/// MARK: AppDelegateWindowProtocol
+/// Протокол для окна приложения
+protocol AppDelegateWindowProtocol {
+    /// Окно приложения
+    var window: UIWindow? { get set }
+    /// Основной координатор
+    var mainCoordinator: CoreCoordinator? { get set }
+    /// Начальная настройка окна приложения
+    func startWindowSetup()
 }
 
+@main
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    /// Текущее окно
+    var window: UIWindow?
+    /// Основной координатор
+    var mainCoordinator: CoreCoordinator?
+    
+    /// Запуск приложения
+    /// - Parameters:
+    ///   - application: Приложение
+    ///   - launchOptions: Опции
+    /// - Returns: Bool
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.startWindowSetup()
+        return true
+    }
+    
+    /// Приложение собирается уйти в фон
+    /// - Parameter application: UIApplication
+    func applicationWillResignActive(_ application: UIApplication) {
+    }
+    
+    /// Приложение вошло в фон
+    /// - Parameter application: UIApplication
+    func applicationDidEnterBackground(_ application: UIApplication) {
+    }
+    
+    /// Приложение вышло из фона
+    /// - Parameter application: UIApplication
+    func applicationWillEnterForeground(_ application: UIApplication) {
+    }
+    
+    /// Приложение стало активным
+    /// - Parameter application: UIApplication
+    func applicationDidBecomeActive(_ application: UIApplication) {
+    }
+    
+    /// Приложение было остановлено
+    /// - Parameter application: UIApplication
+    func applicationWillTerminate(_ application: UIApplication) {
+    }
+}
+
+/// MARK: AppDelegateWindowProtocol
+extension AppDelegate: AppDelegateWindowProtocol {
+    /// Начальная настройка окна приложения
+    func startWindowSetup() {
+        let _window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = _window
+        let navigationController = UINavigationController()
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+        let router = RouterImplementation(navigationController: navigationController)
+        
+        let startCoordinator = NavigationFactory().makeStartCoordinator(router: router)
+        self.mainCoordinator = startCoordinator
+        startCoordinator.start()
+    }
+}

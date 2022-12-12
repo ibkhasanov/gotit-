@@ -8,14 +8,49 @@
 
 /* Begin PBXBuildFile section */
 		CE9D878F2947742300086F9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D878E2947742300086F9F /* AppDelegate.swift */; };
-		CE9D87912947742300086F9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87902947742300086F9F /* SceneDelegate.swift */; };
-		CE9D87932947742300086F9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87922947742300086F9F /* ViewController.swift */; };
-		CE9D87962947742300086F9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9D87942947742300086F9F /* Main.storyboard */; };
 		CE9D87982947742500086F9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9D87972947742500086F9F /* Assets.xcassets */; };
 		CE9D879B2947742500086F9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9D87992947742500086F9F /* LaunchScreen.storyboard */; };
 		CE9D87A62947742600086F9F /* GotItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87A52947742600086F9F /* GotItTests.swift */; };
 		CE9D87B02947742600086F9F /* GotItUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87AF2947742600086F9F /* GotItUITests.swift */; };
 		CE9D87B22947742600086F9F /* GotItUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87B12947742600086F9F /* GotItUITestsLaunchTests.swift */; };
+		CE9D87C02947786300086F9F /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87BF2947786300086F9F /* RegistrationViewController.swift */; };
+		CE9D87D829477A5200086F9F /* CorePresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87C729477A5200086F9F /* CorePresentable.swift */; };
+		CE9D87D929477A5200086F9F /* CoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87C929477A5200086F9F /* CoreCoordinator.swift */; };
+		CE9D87DA29477A5200086F9F /* ScreenConfiguratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87CA29477A5200086F9F /* ScreenConfiguratorProtocol.swift */; };
+		CE9D87DB29477A5200086F9F /* +UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87CC29477A5200086F9F /* +UINavigationController.swift */; };
+		CE9D87DC29477A5200086F9F /* +UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87CD29477A5200086F9F /* +UIViewController.swift */; };
+		CE9D87DD29477A5200086F9F /* RouterImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87D029477A5200086F9F /* RouterImplementation.swift */; };
+		CE9D87DE29477A5200086F9F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87D229477A5200086F9F /* NavigationController.swift */; };
+		CE9D87DF29477A5200086F9F /* CoreBaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87D429477A5200086F9F /* CoreBaseCoordinator.swift */; };
+		CE9D87E029477A5200086F9F /* NavigationFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87D529477A5200086F9F /* NavigationFactoryProtocol.swift */; };
+		CE9D87E129477A5200086F9F /* CoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87D729477A5200086F9F /* CoreRouter.swift */; };
+		CE9D87E429477A8600086F9F /* ActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87E329477A8600086F9F /* ActionHandler.swift */; };
+		CE9D87E829477B4F00086F9F /* InputText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87E729477B4F00086F9F /* InputText.swift */; };
+		CE9D87EA29477B8D00086F9F /* InputTextContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87E929477B8D00086F9F /* InputTextContent.swift */; };
+		CE9D87ED29477BEC00086F9F /* AutolayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87EC29477BEC00086F9F /* AutolayoutUtils.swift */; };
+		CE9D87F129477C3E00086F9F /* LabelAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87F029477C3E00086F9F /* LabelAppearance.swift */; };
+		CE9D87F329477C6400086F9F /* UITextFieldAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87F229477C6400086F9F /* UITextFieldAppearance.swift */; };
+		CE9D87F529477C7B00086F9F /* ViewAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87F429477C7B00086F9F /* ViewAppearance.swift */; };
+		CE9D87F829477CE500086F9F /* BrandingColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87F729477CE500086F9F /* BrandingColors.swift */; };
+		CE9D87FA29477CF400086F9F /* BrandingFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87F929477CF400086F9F /* BrandingFonts.swift */; };
+		CE9D87FE294780FC00086F9F /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87FD294780FC00086F9F /* RegistrationViewModel.swift */; };
+		CE9D88002947826900086F9F /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D87FF2947826900086F9F /* RegistrationCoordinator.swift */; };
+		CE9D8802294784B200086F9F /* NavigationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D8801294784B200086F9F /* NavigationFactory.swift */; };
+		CE9D8805294786E000086F9F /* RegistrationAppearanceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D8804294786E000086F9F /* RegistrationAppearanceFactory.swift */; };
+		CE9D8807294786F700086F9F /* RegistrationLayoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D8806294786F700086F9F /* RegistrationLayoutFactory.swift */; };
+		CE9D88092947871500086F9F /* RegistrationCoordinatorsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D88082947871500086F9F /* RegistrationCoordinatorsFactory.swift */; };
+		CE9D880C29478C2300086F9F /* EmailRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D880B29478C2300086F9F /* EmailRegistrationViewController.swift */; };
+		CE9D880E29478C2F00086F9F /* EmailRegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D880D29478C2F00086F9F /* EmailRegistrationViewModel.swift */; };
+		CE9D881029478C4000086F9F /* EmailRegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D880F29478C4000086F9F /* EmailRegistrationCoordinator.swift */; };
+		CE9D88152947960000086F9F /* UCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D88142947960000086F9F /* UCButton.swift */; };
+		CE9D88172947961D00086F9F /* UCBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D88162947961D00086F9F /* UCBaseButton.swift */; };
+		CE9D88192947963E00086F9F /* CompletionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D88182947963E00086F9F /* CompletionButton.swift */; };
+		CE9D881B29479DC700086F9F /* RegistrationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D881A29479DC700086F9F /* RegistrationRepository.swift */; };
+		CE9D881E2947A17800086F9F /* AppleAuthWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D881D2947A17800086F9F /* AppleAuthWrapper.swift */; };
+		CE9D88202947A1BB00086F9F /* GoogleAuthWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D881F2947A1BB00086F9F /* GoogleAuthWrapper.swift */; };
+		CE9D88222947A25A00086F9F /* FacebookAuthWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D88212947A25A00086F9F /* FacebookAuthWrapper.swift */; };
+		CE9D88252947A60A00086F9F /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D88242947A60A00086F9F /* Label.swift */; };
+		CE9D88272947AC4900086F9F /* FirebaseAPIWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D88262947AC4900086F9F /* FirebaseAPIWrappers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,9 +73,6 @@
 /* Begin PBXFileReference section */
 		CE9D878B2947742300086F9F /* GotIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GotIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9D878E2947742300086F9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE9D87902947742300086F9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE9D87922947742300086F9F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CE9D87952947742300086F9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE9D87972947742500086F9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE9D879A2947742500086F9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE9D879C2947742500086F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +81,44 @@
 		CE9D87AB2947742600086F9F /* GotItUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GotItUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9D87AF2947742600086F9F /* GotItUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotItUITests.swift; sourceTree = "<group>"; };
 		CE9D87B12947742600086F9F /* GotItUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotItUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CE9D87BF2947786300086F9F /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		CE9D87C729477A5200086F9F /* CorePresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePresentable.swift; sourceTree = "<group>"; };
+		CE9D87C929477A5200086F9F /* CoreCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreCoordinator.swift; sourceTree = "<group>"; };
+		CE9D87CA29477A5200086F9F /* ScreenConfiguratorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenConfiguratorProtocol.swift; sourceTree = "<group>"; };
+		CE9D87CC29477A5200086F9F /* +UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+UINavigationController.swift"; sourceTree = "<group>"; };
+		CE9D87CD29477A5200086F9F /* +UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+UIViewController.swift"; sourceTree = "<group>"; };
+		CE9D87D029477A5200086F9F /* RouterImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterImplementation.swift; sourceTree = "<group>"; };
+		CE9D87D229477A5200086F9F /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		CE9D87D429477A5200086F9F /* CoreBaseCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreBaseCoordinator.swift; sourceTree = "<group>"; };
+		CE9D87D529477A5200086F9F /* NavigationFactoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationFactoryProtocol.swift; sourceTree = "<group>"; };
+		CE9D87D729477A5200086F9F /* CoreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreRouter.swift; sourceTree = "<group>"; };
+		CE9D87E329477A8600086F9F /* ActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionHandler.swift; sourceTree = "<group>"; };
+		CE9D87E729477B4F00086F9F /* InputText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputText.swift; sourceTree = "<group>"; };
+		CE9D87E929477B8D00086F9F /* InputTextContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextContent.swift; sourceTree = "<group>"; };
+		CE9D87EC29477BEC00086F9F /* AutolayoutUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutolayoutUtils.swift; sourceTree = "<group>"; };
+		CE9D87F029477C3E00086F9F /* LabelAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAppearance.swift; sourceTree = "<group>"; };
+		CE9D87F229477C6400086F9F /* UITextFieldAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldAppearance.swift; sourceTree = "<group>"; };
+		CE9D87F429477C7B00086F9F /* ViewAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAppearance.swift; sourceTree = "<group>"; };
+		CE9D87F729477CE500086F9F /* BrandingColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandingColors.swift; sourceTree = "<group>"; };
+		CE9D87F929477CF400086F9F /* BrandingFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandingFonts.swift; sourceTree = "<group>"; };
+		CE9D87FD294780FC00086F9F /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		CE9D87FF2947826900086F9F /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
+		CE9D8801294784B200086F9F /* NavigationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationFactory.swift; sourceTree = "<group>"; };
+		CE9D8804294786E000086F9F /* RegistrationAppearanceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationAppearanceFactory.swift; sourceTree = "<group>"; };
+		CE9D8806294786F700086F9F /* RegistrationLayoutFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationLayoutFactory.swift; sourceTree = "<group>"; };
+		CE9D88082947871500086F9F /* RegistrationCoordinatorsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinatorsFactory.swift; sourceTree = "<group>"; };
+		CE9D880B29478C2300086F9F /* EmailRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRegistrationViewController.swift; sourceTree = "<group>"; };
+		CE9D880D29478C2F00086F9F /* EmailRegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRegistrationViewModel.swift; sourceTree = "<group>"; };
+		CE9D880F29478C4000086F9F /* EmailRegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRegistrationCoordinator.swift; sourceTree = "<group>"; };
+		CE9D88142947960000086F9F /* UCButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UCButton.swift; sourceTree = "<group>"; };
+		CE9D88162947961D00086F9F /* UCBaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UCBaseButton.swift; sourceTree = "<group>"; };
+		CE9D88182947963E00086F9F /* CompletionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionButton.swift; sourceTree = "<group>"; };
+		CE9D881A29479DC700086F9F /* RegistrationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRepository.swift; sourceTree = "<group>"; };
+		CE9D881D2947A17800086F9F /* AppleAuthWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthWrapper.swift; sourceTree = "<group>"; };
+		CE9D881F2947A1BB00086F9F /* GoogleAuthWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthWrapper.swift; sourceTree = "<group>"; };
+		CE9D88212947A25A00086F9F /* FacebookAuthWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthWrapper.swift; sourceTree = "<group>"; };
+		CE9D88242947A60A00086F9F /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		CE9D88262947AC4900086F9F /* FirebaseAPIWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPIWrappers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +169,11 @@
 		CE9D878D2947742300086F9F /* GotIt */ = {
 			isa = PBXGroup;
 			children = (
+				CE9D87FB2947809C00086F9F /* Flows */,
+				CE9D87E529477B2800086F9F /* UIComponents */,
+				CE9D87C4294779E900086F9F /* Core */,
+				CE9D87C1294778E200086F9F /* AppCoordinator */,
 				CE9D878E2947742300086F9F /* AppDelegate.swift */,
-				CE9D87902947742300086F9F /* SceneDelegate.swift */,
-				CE9D87922947742300086F9F /* ViewController.swift */,
-				CE9D87942947742300086F9F /* Main.storyboard */,
 				CE9D87972947742500086F9F /* Assets.xcassets */,
 				CE9D87992947742500086F9F /* LaunchScreen.storyboard */,
 				CE9D879C2947742500086F9F /* Info.plist */,
@@ -125,6 +196,240 @@
 				CE9D87B12947742600086F9F /* GotItUITestsLaunchTests.swift */,
 			);
 			path = GotItUITests;
+			sourceTree = "<group>";
+		};
+		CE9D87BE2947780F00086F9F /* RegistrationFlow */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87BF2947786300086F9F /* RegistrationViewController.swift */,
+				CE9D87FD294780FC00086F9F /* RegistrationViewModel.swift */,
+				CE9D87FF2947826900086F9F /* RegistrationCoordinator.swift */,
+				CE9D881A29479DC700086F9F /* RegistrationRepository.swift */,
+			);
+			path = RegistrationFlow;
+			sourceTree = "<group>";
+		};
+		CE9D87C1294778E200086F9F /* AppCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87C529477A5200086F9F /* Coordinator */,
+				CE9D8801294784B200086F9F /* NavigationFactory.swift */,
+			);
+			path = AppCoordinator;
+			sourceTree = "<group>";
+		};
+		CE9D87C4294779E900086F9F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87E229477A6E00086F9F /* Handlers */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		CE9D87C529477A5200086F9F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87C629477A5200086F9F /* Presentable */,
+				CE9D87C829477A5200086F9F /* Coordinator */,
+				CE9D87CA29477A5200086F9F /* ScreenConfiguratorProtocol.swift */,
+				CE9D87CB29477A5200086F9F /* +UI */,
+				CE9D87CE29477A5200086F9F /* Implementation */,
+				CE9D87D529477A5200086F9F /* NavigationFactoryProtocol.swift */,
+				CE9D87D629477A5200086F9F /* Router */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CE9D87C629477A5200086F9F /* Presentable */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87C729477A5200086F9F /* CorePresentable.swift */,
+			);
+			path = Presentable;
+			sourceTree = "<group>";
+		};
+		CE9D87C829477A5200086F9F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87C929477A5200086F9F /* CoreCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CE9D87CB29477A5200086F9F /* +UI */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87CC29477A5200086F9F /* +UINavigationController.swift */,
+				CE9D87CD29477A5200086F9F /* +UIViewController.swift */,
+			);
+			path = "+UI";
+			sourceTree = "<group>";
+		};
+		CE9D87CE29477A5200086F9F /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87CF29477A5200086F9F /* RouterImplementation */,
+				CE9D87D129477A5200086F9F /* NavigationController */,
+				CE9D87D329477A5200086F9F /* BaseCoordinator */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		CE9D87CF29477A5200086F9F /* RouterImplementation */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87D029477A5200086F9F /* RouterImplementation.swift */,
+			);
+			path = RouterImplementation;
+			sourceTree = "<group>";
+		};
+		CE9D87D129477A5200086F9F /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87D229477A5200086F9F /* NavigationController.swift */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
+		CE9D87D329477A5200086F9F /* BaseCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87D429477A5200086F9F /* CoreBaseCoordinator.swift */,
+			);
+			path = BaseCoordinator;
+			sourceTree = "<group>";
+		};
+		CE9D87D629477A5200086F9F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87D729477A5200086F9F /* CoreRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CE9D87E229477A6E00086F9F /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87E329477A8600086F9F /* ActionHandler.swift */,
+			);
+			path = Handlers;
+			sourceTree = "<group>";
+		};
+		CE9D87E529477B2800086F9F /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87F629477CC500086F9F /* Branding */,
+				CE9D88232947A5FC00086F9F /* Label */,
+				CE9D87EB29477BD000086F9F /* Utils */,
+				CE9D87E629477B4100086F9F /* InputText */,
+				CE9D8811294795A700086F9F /* Buttons */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		CE9D87E629477B4100086F9F /* InputText */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87E729477B4F00086F9F /* InputText.swift */,
+				CE9D87E929477B8D00086F9F /* InputTextContent.swift */,
+			);
+			path = InputText;
+			sourceTree = "<group>";
+		};
+		CE9D87EB29477BD000086F9F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87EF29477C2400086F9F /* Appearance */,
+				CE9D87EE29477C1500086F9F /* AutolayoutUtils */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CE9D87EE29477C1500086F9F /* AutolayoutUtils */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87EC29477BEC00086F9F /* AutolayoutUtils.swift */,
+			);
+			path = AutolayoutUtils;
+			sourceTree = "<group>";
+		};
+		CE9D87EF29477C2400086F9F /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87F029477C3E00086F9F /* LabelAppearance.swift */,
+				CE9D87F229477C6400086F9F /* UITextFieldAppearance.swift */,
+				CE9D87F429477C7B00086F9F /* ViewAppearance.swift */,
+			);
+			path = Appearance;
+			sourceTree = "<group>";
+		};
+		CE9D87F629477CC500086F9F /* Branding */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D87F729477CE500086F9F /* BrandingColors.swift */,
+				CE9D87F929477CF400086F9F /* BrandingFonts.swift */,
+			);
+			path = Branding;
+			sourceTree = "<group>";
+		};
+		CE9D87FB2947809C00086F9F /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D881C2947A15E00086F9F /* Wrappers */,
+				CE9D88032947869A00086F9F /* Factories */,
+				CE9D880A29478BFA00086F9F /* EmailRegistrationFlow */,
+				CE9D87BE2947780F00086F9F /* RegistrationFlow */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		CE9D88032947869A00086F9F /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D8804294786E000086F9F /* RegistrationAppearanceFactory.swift */,
+				CE9D8806294786F700086F9F /* RegistrationLayoutFactory.swift */,
+				CE9D88082947871500086F9F /* RegistrationCoordinatorsFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		CE9D880A29478BFA00086F9F /* EmailRegistrationFlow */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D880B29478C2300086F9F /* EmailRegistrationViewController.swift */,
+				CE9D880D29478C2F00086F9F /* EmailRegistrationViewModel.swift */,
+				CE9D880F29478C4000086F9F /* EmailRegistrationCoordinator.swift */,
+			);
+			path = EmailRegistrationFlow;
+			sourceTree = "<group>";
+		};
+		CE9D8811294795A700086F9F /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D88142947960000086F9F /* UCButton.swift */,
+				CE9D88162947961D00086F9F /* UCBaseButton.swift */,
+				CE9D88182947963E00086F9F /* CompletionButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		CE9D881C2947A15E00086F9F /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D881D2947A17800086F9F /* AppleAuthWrapper.swift */,
+				CE9D881F2947A1BB00086F9F /* GoogleAuthWrapper.swift */,
+				CE9D88212947A25A00086F9F /* FacebookAuthWrapper.swift */,
+				CE9D88262947AC4900086F9F /* FirebaseAPIWrappers.swift */,
+			);
+			path = Wrappers;
+			sourceTree = "<group>";
+		};
+		CE9D88232947A5FC00086F9F /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D88242947A60A00086F9F /* Label.swift */,
+			);
+			path = Label;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +538,6 @@
 			files = (
 				CE9D879B2947742500086F9F /* LaunchScreen.storyboard in Resources */,
 				CE9D87982947742500086F9F /* Assets.xcassets in Resources */,
-				CE9D87962947742300086F9F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +562,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE9D87932947742300086F9F /* ViewController.swift in Sources */,
+				CE9D881029478C4000086F9F /* EmailRegistrationCoordinator.swift in Sources */,
+				CE9D87DA29477A5200086F9F /* ScreenConfiguratorProtocol.swift in Sources */,
+				CE9D87F829477CE500086F9F /* BrandingColors.swift in Sources */,
+				CE9D87EA29477B8D00086F9F /* InputTextContent.swift in Sources */,
+				CE9D87F529477C7B00086F9F /* ViewAppearance.swift in Sources */,
+				CE9D87D929477A5200086F9F /* CoreCoordinator.swift in Sources */,
+				CE9D881E2947A17800086F9F /* AppleAuthWrapper.swift in Sources */,
+				CE9D8805294786E000086F9F /* RegistrationAppearanceFactory.swift in Sources */,
+				CE9D880C29478C2300086F9F /* EmailRegistrationViewController.swift in Sources */,
+				CE9D87E829477B4F00086F9F /* InputText.swift in Sources */,
+				CE9D87DC29477A5200086F9F /* +UIViewController.swift in Sources */,
 				CE9D878F2947742300086F9F /* AppDelegate.swift in Sources */,
-				CE9D87912947742300086F9F /* SceneDelegate.swift in Sources */,
+				CE9D88092947871500086F9F /* RegistrationCoordinatorsFactory.swift in Sources */,
+				CE9D87D829477A5200086F9F /* CorePresentable.swift in Sources */,
+				CE9D8802294784B200086F9F /* NavigationFactory.swift in Sources */,
+				CE9D87C02947786300086F9F /* RegistrationViewController.swift in Sources */,
+				CE9D87F329477C6400086F9F /* UITextFieldAppearance.swift in Sources */,
+				CE9D88192947963E00086F9F /* CompletionButton.swift in Sources */,
+				CE9D87DE29477A5200086F9F /* NavigationController.swift in Sources */,
+				CE9D87E429477A8600086F9F /* ActionHandler.swift in Sources */,
+				CE9D8807294786F700086F9F /* RegistrationLayoutFactory.swift in Sources */,
+				CE9D880E29478C2F00086F9F /* EmailRegistrationViewModel.swift in Sources */,
+				CE9D87ED29477BEC00086F9F /* AutolayoutUtils.swift in Sources */,
+				CE9D88172947961D00086F9F /* UCBaseButton.swift in Sources */,
+				CE9D88222947A25A00086F9F /* FacebookAuthWrapper.swift in Sources */,
+				CE9D87F129477C3E00086F9F /* LabelAppearance.swift in Sources */,
+				CE9D87E029477A5200086F9F /* NavigationFactoryProtocol.swift in Sources */,
+				CE9D87DB29477A5200086F9F /* +UINavigationController.swift in Sources */,
+				CE9D88272947AC4900086F9F /* FirebaseAPIWrappers.swift in Sources */,
+				CE9D88252947A60A00086F9F /* Label.swift in Sources */,
+				CE9D881B29479DC700086F9F /* RegistrationRepository.swift in Sources */,
+				CE9D87DD29477A5200086F9F /* RouterImplementation.swift in Sources */,
+				CE9D87FA29477CF400086F9F /* BrandingFonts.swift in Sources */,
+				CE9D87E129477A5200086F9F /* CoreRouter.swift in Sources */,
+				CE9D88002947826900086F9F /* RegistrationCoordinator.swift in Sources */,
+				CE9D88152947960000086F9F /* UCButton.swift in Sources */,
+				CE9D87FE294780FC00086F9F /* RegistrationViewModel.swift in Sources */,
+				CE9D88202947A1BB00086F9F /* GoogleAuthWrapper.swift in Sources */,
+				CE9D87DF29477A5200086F9F /* CoreBaseCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +637,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CE9D87942947742300086F9F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE9D87952947742300086F9F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CE9D87992947742500086F9F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -442,9 +774,9 @@
 				INFOPLIST_FILE = GotIt/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,9 +784,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibragim.khasanov.GotIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -470,9 +805,9 @@
 				INFOPLIST_FILE = GotIt/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -480,9 +815,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibragim.khasanov.GotIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
