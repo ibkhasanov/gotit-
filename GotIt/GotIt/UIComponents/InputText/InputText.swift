@@ -31,18 +31,18 @@ extension InputText {
                                                       font: UIFont.Branding.Header.h7,
                                                       numberOfLines: 1,
                                                       lineBreakMode: .byWordWrapping),
-                    text: UITextField.Appearance = .init(backgroundColor: .clear,
+                    text: UITextField.Appearance = .init(backgroundColor: UIColor.Branding.Background.default,
                                                          textColor: UIColor.Branding.Text.black,
                                                          textAlignment: NSTextAlignment.left,
                                                          font: UIFont.Branding.Body.b1,
-                                                         borderStyle: UITextField.BorderStyle.none,
+                                                         borderStyle: UITextField.BorderStyle.roundedRect,
                                                          clearButtonMode: .whileEditing),
                     comment: UILabel.Appearance = .init(textColor: UIColor.Branding.Text.darkGrey,
                                                         font: UIFont.Branding.Component.comment,
                                                         numberOfLines: 0,
                                                         lineBreakMode: .byWordWrapping),
-                    hSeparator: UIView.Appearance = .init(backgroundColor: UIColor.Branding.Separator.lightGrey),
-                    hSeparatorActive: UIView.Appearance = .init(backgroundColor: UIColor.Branding.Separator.blue),
+                    hSeparator: UIView.Appearance = .init(backgroundColor: UIColor.Branding.Background.clear),
+                    hSeparatorActive: UIView.Appearance = .init(backgroundColor: UIColor.Branding.Background.clear),
                     errorColor: UIColor = UIColor.Branding.Text.red) {
             self.title = title
             self.text = text
@@ -81,7 +81,7 @@ extension InputText {
                     axis: NSLayoutConstraint.Axis = NSLayoutConstraint.Axis.vertical,
                     alignment: UIStackView.Alignment = UIStackView.Alignment.fill,
                     distribution: UIStackView.Distribution = UIStackView.Distribution.fill,
-                    heightField: CGFloat = 24,
+                    heightField: CGFloat = 50,
                     heightHSeparator: CGFloat = 1,
                     rectClearButton: CGRect = CGRect(x: 0, y: 0, width: 24, height: 24)) {
             self.spacing = spacing

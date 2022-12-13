@@ -84,13 +84,14 @@ extension RegistrationCoordinator {
     /// Выполнение флоу
     private func performFlow() {
         let vm = RegistrationViewModel(image: UIImage(named: "logo"),
-                                       message: "cdsgkasldjm",
-                                       agreements: "dsf",
+                                       message: "Create an account to\ntrack & save your progress",
+                                       agreements: "By tapping Continue your agree to our Terms and acknowledge that you have read Privacy Policy",
                                        repository: self.repository,
-                                       emailTitle: "",
-                                       appleTitle: "",
-                                       facebookTitle: "",
-                                       googleTitle: "")
+                                       emailTitle: "Continue with Email",
+                                       appleTitle: "Continue with Apple",
+                                       facebookTitle: "Continue with Facebook",
+                                       googleTitle: "Continue with Google",
+                                       coordinator: self)
         let vc = RegistrationViewController(layout: self.layoutFactory.types,
                                             appearance: self.appearanceFactory.types,
                                             viewModel: vm)

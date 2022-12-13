@@ -58,12 +58,12 @@ extension RegistrationViewController {
         ///   - spacing: Отступы между кнопками
         ///   - buttonHeight: Высота кнопок
         init(insets: UIEdgeInsets = .init(top: 20, left: 16, bottom: 0, right: 16),
-             spacing: CGFloat = 16,
-             buttonHeight: CGFloat = 52,
-             messageInsets: UIEdgeInsets = .init(top: 20, left: 16, bottom: 0, right: 16),
-             imageSize: CGSize = CGSize(width: 100, height: 100),
+             spacing: CGFloat = 12,
+             buttonHeight: CGFloat = 42,
+             messageInsets: UIEdgeInsets = .init(top: 30, left: 16, bottom: 0, right: 16),
+             imageSize: CGSize = CGSize(width: 110, height: 110),
              imageInsets: UIEdgeInsets = .init(top: 20, left: 16, bottom: 0, right: 16),
-             agreementsInsets: UIEdgeInsets = .init(top: 20, left: 16, bottom: 0, right: 16)) {
+             agreementsInsets: UIEdgeInsets = .init(top: 10, left: 16, bottom: 0, right: 16)) {
             self.insets = insets
             self.spacing = spacing
             self.buttonHeight = buttonHeight

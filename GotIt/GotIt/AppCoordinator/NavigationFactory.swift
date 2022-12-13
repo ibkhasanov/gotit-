@@ -14,9 +14,12 @@ final class NavigationFactory: NavigationFactoryProtocol {
     func makeStartCoordinator(router: CoreRouter) -> CoreCoordinator {
         let appearanceFactory = RegistrationAppearanceFactory()
         let layoutFactory = RegistrationLayoutFactory()
-        let factoryCoordinators = RegistrationCoordinatorsFactory(appearanceFactory: appearanceFactory,
-                                                                  layoutFactory: layoutFactory)
         let repository = RegistrationRepository(authApi: FirebaseAPIWrappers())
+        
+        let factoryCoordinators = RegistrationCoordinatorsFactory(appearanceFactory: appearanceFactory,
+                                                                  layoutFactory: layoutFactory,
+                                                                  repository: repository)
+        
         let coordinator = RegistrationCoordinator(router: router,
                                                   factoryCoordinators: factoryCoordinators,
                                                   appearanceFactory: appearanceFactory,

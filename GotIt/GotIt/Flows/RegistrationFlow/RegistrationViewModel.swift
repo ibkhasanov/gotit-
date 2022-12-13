@@ -8,7 +8,6 @@
 import UIKit
 import Foundation
 
-
 protocol RegistrationViewModelProtocol {
     /// Лого
     var image: UIImage? { get }
@@ -30,6 +29,7 @@ final class RegistrationViewModel: RegistrationViewModelProtocol {
     private let appleTitle: String
     private let facebookTitle: String
     private let googleTitle: String
+    private var coordinator: RegistrationCoordinatorProtocol
     
     init(image: UIImage?,
          message: String,
@@ -38,7 +38,8 @@ final class RegistrationViewModel: RegistrationViewModelProtocol {
          emailTitle: String,
          appleTitle: String,
          facebookTitle: String,
-         googleTitle: String) {
+         googleTitle: String,
+         coordinator: RegistrationCoordinatorProtocol) {
         self.image = image
         self.message = message
         self.agreements = agreements
@@ -47,6 +48,7 @@ final class RegistrationViewModel: RegistrationViewModelProtocol {
         self.appleTitle = appleTitle
         self.facebookTitle = facebookTitle
         self.googleTitle = googleTitle
+        self.coordinator = coordinator
     }
     
     func viewDidLoad() {
@@ -66,6 +68,8 @@ extension RegistrationViewModel {
     private func makeEmailButton() -> UCBaseButton.Content {
         let actionHandler = ActionHandler({ [weak self] in
             guard let _self = self else { return }
+            _self.coordinator.toEmail = true
+            _self.coordinator.finishActionFlow()
         })
         return UCButton.Content(title: self.emailTitle,
                                 isEnabled: true,
