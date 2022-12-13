@@ -27,7 +27,7 @@ extension InputText {
         ///   - hSeparator: Внешний вид разделителя
         ///   - hSeparatorActive: Внешний вид активного разделителя
         ///   - errorColor: Цвет ошибки
-        public init(title: UILabel.Appearance = .init(textColor: UIColor.Branding.Text.darkGrey,
+        public init(title: UILabel.Appearance = .init(textColor: UIColor.Branding.Text.black,
                                                       font: UIFont.Branding.Header.h7,
                                                       numberOfLines: 1,
                                                       lineBreakMode: .byWordWrapping),
@@ -81,8 +81,8 @@ extension InputText {
                     axis: NSLayoutConstraint.Axis = NSLayoutConstraint.Axis.vertical,
                     alignment: UIStackView.Alignment = UIStackView.Alignment.fill,
                     distribution: UIStackView.Distribution = UIStackView.Distribution.fill,
-                    heightField: CGFloat = 50,
-                    heightHSeparator: CGFloat = 1,
+                    heightField: CGFloat = 40,
+                    heightHSeparator: CGFloat = 0,
                     rectClearButton: CGRect = CGRect(x: 0, y: 0, width: 24, height: 24)) {
             self.spacing = spacing
             self.titleEdgeInsets = titleEdgeInsets

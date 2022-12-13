@@ -24,7 +24,10 @@ final class NavigationFactory: NavigationFactoryProtocol {
                                                   factoryCoordinators: factoryCoordinators,
                                                   appearanceFactory: appearanceFactory,
                                                   layoutFactory: layoutFactory,
-                                                  repository: repository)
+                                                  repository: repository,
+                                                  appleAuthWrapper: AppleAuthWrapper(),
+                                                  googleAuthWrapper: GoogleAuthWrapper(),
+                                                  facebookAuthWrapper: FacebookAuthWrapper())
         return coordinator
     }
 }

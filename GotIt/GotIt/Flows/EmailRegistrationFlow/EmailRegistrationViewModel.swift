@@ -16,7 +16,7 @@ protocol EmailRegistrationViewModelProtocol {
     /// Условия
     var agreements: String { get }
     /// ViewDidLoad
-    func viewDidLoad()
+    func viewDidLoad(_ completion: @escaping ((EmailRegistrationViewController.Content) -> ()))
 }
 
 extension EmailRegistrationViewModel {
@@ -63,7 +63,10 @@ final class EmailRegistrationViewModel: EmailRegistrationViewModelProtocol {
         self.coordinator = coordinator
     }
     
-    func viewDidLoad() {
+    func viewDidLoad(_ completion: @escaping ((EmailRegistrationViewController.Content) -> ())) {
+        /// Можно переделать на реактивщину, но не хотелось тянуть зависимости
+        let content = self.makeContent()
+        completion(content)
     }
 }
 

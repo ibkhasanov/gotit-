@@ -214,7 +214,13 @@ final class RegistrationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.apply(appearance: self.appearance)
-        self.viewModel.viewDidLoad()
+        self.viewModel.viewDidLoad { [weak self] content in
+            guard let _self = self else { return }
+            _self.emailButton.content = content.emailButton
+            _self.appleButton.content = content.appleButton
+            _self.googleButton.content = content.googleButton
+            _self.facebookButton.content = content.facebookButton
+        }
     }
     
     /// Применение настроек визуализации

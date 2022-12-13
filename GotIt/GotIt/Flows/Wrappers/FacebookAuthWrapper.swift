@@ -13,6 +13,6 @@ protocol FacebookAuthWrapperProtocol {
 
 final class FacebookAuthWrapper: FacebookAuthWrapperProtocol {
     func auth(completionHandler: @escaping ((String?, String?) -> ())) {
-        completionHandler("facebok_login", "facebok_password")
+        completionHandler("facebok_login@mail.com", UUID().uuidString)
     }
 }

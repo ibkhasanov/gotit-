@@ -28,7 +28,7 @@ extension EmailRegistrationCoordinator {
 
 /// Протокол координатора для регистрации
 protocol EmailRegistrationCoordinatorProtocol {
-    /// Нажатие на ссылку
+    ///  Успешно
     var success: Bool? { get set }
     /// Финиш
     func finishActionFlow()
@@ -97,7 +97,7 @@ extension EmailRegistrationCoordinator {
         self.router.push(vc)
     }
     
-    /// Переход к email
+    /// Переход к успеху
     private func transitionToSuccess() {
     }
 }

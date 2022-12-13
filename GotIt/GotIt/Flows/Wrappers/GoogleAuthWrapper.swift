@@ -13,6 +13,6 @@ protocol GoogleAuthWrapperProtocol {
 
 final class GoogleAuthWrapper: GoogleAuthWrapperProtocol {
     func auth(completionHandler: @escaping ((String?, String?) -> ())) {
-        completionHandler("google_login", "google_password")
+        completionHandler("google_login@mail.com", UUID().uuidString)
     }
 }

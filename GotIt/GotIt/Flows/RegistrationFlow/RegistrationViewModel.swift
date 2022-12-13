@@ -16,7 +16,7 @@ protocol RegistrationViewModelProtocol {
     /// Условия
     var agreements: String { get }
     /// ViewDidLoad
-    func viewDidLoad()
+    func viewDidLoad(_ completion: @escaping ((RegistrationViewController.Content) -> ()))
 }
 
 
@@ -30,6 +30,9 @@ final class RegistrationViewModel: RegistrationViewModelProtocol {
     private let facebookTitle: String
     private let googleTitle: String
     private var coordinator: RegistrationCoordinatorProtocol
+    private var appleAuthWrapper: AppleAuthWrapperProtocol
+    private let googleAuthWrapper: GoogleAuthWrapperProtocol
+    private let facebookAuthWrapper: FacebookAuthWrapperProtocol
     
     init(image: UIImage?,
          message: String,
@@ -39,7 +42,10 @@ final class RegistrationViewModel: RegistrationViewModelProtocol {
          appleTitle: String,
          facebookTitle: String,
          googleTitle: String,
-         coordinator: RegistrationCoordinatorProtocol) {
+         coordinator: RegistrationCoordinatorProtocol,
+         appleAuthWrapper: AppleAuthWrapperProtocol,
+         googleAuthWrapper: GoogleAuthWrapperProtocol,
+         facebookAuthWrapper: FacebookAuthWrapperProtocol) {
         self.image = image
         self.message = message
         self.agreements = agreements
@@ -49,9 +55,15 @@ final class RegistrationViewModel: RegistrationViewModelProtocol {
         self.facebookTitle = facebookTitle
         self.googleTitle = googleTitle
         self.coordinator = coordinator
+        self.appleAuthWrapper = appleAuthWrapper
+        self.googleAuthWrapper = googleAuthWrapper
+        self.facebookAuthWrapper = facebookAuthWrapper
     }
     
-    func viewDidLoad() {
+    func viewDidLoad(_ completion: @escaping ((RegistrationViewController.Content) -> ())) {
+        /// Можно переделать на реактивщину, но не хотелось тянуть зависимости
+        let content = self.makeContent()
+        completion(content)
     }
 }
 
@@ -80,6 +92,8 @@ extension RegistrationViewModel {
     private func makeAppleButton() -> UCBaseButton.Content {
         let actionHandler = ActionHandler({ [weak self] in
             guard let _self = self else { return }
+            _self.appleAuthWrapper.auth()
+            _self.appleAuthWrapper.delegate = _self
         })
         return UCButton.Content(title: self.appleTitle,
                                 isEnabled: true,
@@ -107,4 +121,31 @@ extension RegistrationViewModel {
     }
     
     
+}
+
+extension RegistrationViewModel: AppleAuthWrapperDelegate {
+    func complete(email: String?,
+                  password: String?,
+                  error: Error?) {
+        if let _email = email, let _password = password {
+            self.authRequest(_email, password: _password)
+        } else {
+            /// показ ошибки
+        }
+    }
+    
+    func authRequest(_ email: String, password: String) {
+        self.repository.authRequest(email: email,
+                                    password: password) { [weak self] success, error in
+            guard let _self = self else { return }
+            if let _success = success, _success {
+                _self.coordinator.success = true
+                _self.coordinator.finishActionFlow()
+            } else if let _ = error {
+                
+            } else {
+                
+            }
+        }
+    }
 }

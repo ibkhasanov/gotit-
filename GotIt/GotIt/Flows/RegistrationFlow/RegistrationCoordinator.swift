@@ -14,10 +14,15 @@ extension RegistrationCoordinator {
         case startFlow
         /// К WebView
         case toEmail
+        /// Успешно
+        case success
         
-        static func setup(toEmail: Bool?) -> Instructor {
+        static func setup(toEmail: Bool?,
+                          success: Bool?) -> Instructor {
             if let _toEmail = toEmail, _toEmail {
                 return .toEmail
+            } else if let _success = success, _success {
+                return .success
             } else {
                 return .startFlow
             }
@@ -29,6 +34,8 @@ extension RegistrationCoordinator {
 protocol RegistrationCoordinatorProtocol {
     /// Нажатие на ссылку
     var toEmail: Bool? { get set }
+    ///  Успешно
+    var success: Bool? { get set }
     /// Финиш
     func finishActionFlow()
 }
@@ -40,8 +47,12 @@ final class RegistrationCoordinator: CoreBaseCoordinator, RegistrationCoordinato
     private let appearanceFactory: RegistrationAppearanceFactoryProtocol
     private let layoutFactory: RegistrationLayoutFactoryProtocol
     private let repository: RegistrationUnionRepositoryProtocol
+    private let appleAuthWrapper: AppleAuthWrapperProtocol
+    private let googleAuthWrapper: GoogleAuthWrapperProtocol
+    private let facebookAuthWrapper: FacebookAuthWrapperProtocol
     
     var toEmail: Bool?
+    var success: Bool?
     
     /// Инициализатор
     /// - Parameters:
@@ -50,17 +61,24 @@ final class RegistrationCoordinator: CoreBaseCoordinator, RegistrationCoordinato
          factoryCoordinators: RegistrationCoordinatorsFactoryProtocol,
          appearanceFactory: RegistrationAppearanceFactoryProtocol,
          layoutFactory: RegistrationLayoutFactoryProtocol,
-         repository: RegistrationUnionRepositoryProtocol) {
+         repository: RegistrationUnionRepositoryProtocol,
+         appleAuthWrapper: AppleAuthWrapperProtocol,
+         googleAuthWrapper: GoogleAuthWrapperProtocol,
+         facebookAuthWrapper: FacebookAuthWrapperProtocol) {
         self.router = router
         self.factoryCoordinators = factoryCoordinators
         self.appearanceFactory = appearanceFactory
         self.layoutFactory = layoutFactory
         self.repository = repository
+        self.appleAuthWrapper = appleAuthWrapper
+        self.googleAuthWrapper = googleAuthWrapper
+        self.facebookAuthWrapper = facebookAuthWrapper
     }
     
     /// Старт флоу
     override func start() {
-        let instructor = Instructor.setup(toEmail: self.toEmail)
+        let instructor = Instructor.setup(toEmail: self.toEmail,
+                                          success: self.success)
         /// Очитска значений
         self.toEmail = nil
         /// Переходы
@@ -71,6 +89,9 @@ final class RegistrationCoordinator: CoreBaseCoordinator, RegistrationCoordinato
             /// Переход к webView
             case .toEmail:
                 self.transitionToEmail()
+            /// Успешно
+            case .success:
+                break
         }
     }
     
@@ -91,7 +112,10 @@ extension RegistrationCoordinator {
                                        appleTitle: "Continue with Apple",
                                        facebookTitle: "Continue with Facebook",
                                        googleTitle: "Continue with Google",
-                                       coordinator: self)
+                                       coordinator: self,
+                                       appleAuthWrapper: self.appleAuthWrapper,
+                                       googleAuthWrapper: self.googleAuthWrapper,
+                                       facebookAuthWrapper: self.facebookAuthWrapper)
         let vc = RegistrationViewController(layout: self.layoutFactory.types,
                                             appearance: self.appearanceFactory.types,
                                             viewModel: vm)
@@ -102,5 +126,6 @@ extension RegistrationCoordinator {
     private func transitionToEmail() {
         let coordinator = self.factoryCoordinators.makeEmailRegisration(router: self.router)
         self.addDependency(coordinator)
+        coordinator.start()
     }
 }
