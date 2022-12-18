@@ -7,23 +7,14 @@
 
 import UIKit
 
-/// MARK: AppDelegateWindowProtocol
-/// Протокол для окна приложения
-protocol AppDelegateWindowProtocol {
-    /// Окно приложения
-    var window: UIWindow? { get set }
-    /// Основной координатор
-    var mainCoordinator: CoreCoordinator? { get set }
-    /// Начальная настройка окна приложения
-    func startWindowSetup()
-}
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     /// Текущее окно
     var window: UIWindow?
     /// Основной координатор
     var mainCoordinator: CoreCoordinator?
+    /// Конфигуратор
+    var appConfigurator: AppConfigurationProtocol?
     
     /// Запуск приложения
     /// - Parameters:
@@ -65,6 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: AppDelegateWindowProtocol {
     /// Начальная настройка окна приложения
     func startWindowSetup() {
+        self.appConfigurator = AppConfiguration()
+        self.appConfigurator?.configure()
         let _window = UIWindow(frame: UIScreen.main.bounds)
         self.window = _window
         let navigationController = UINavigationController()

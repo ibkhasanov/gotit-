@@ -7,6 +7,8 @@
 
 import UIKit
 import Foundation
+import Bond
+import ReactiveKit
 
 protocol EmailRegistrationViewModelProtocol {
     /// Лого
@@ -15,11 +17,14 @@ protocol EmailRegistrationViewModelProtocol {
     var message: String { get }
     /// Условия
     var agreements: String { get }
+    /// Состояния
+    var state: PassthroughSubject<EmailRegistrationViewController.State, Never> { get }
     /// ViewDidLoad
-    func viewDidLoad(_ completion: @escaping ((EmailRegistrationViewController.Content) -> ()))
+    func viewDidLoad()
 }
 
 extension EmailRegistrationViewModel {
+    /// Состояние данных
     struct State {
         var email: String?
         var password: String?
@@ -42,6 +47,7 @@ final class EmailRegistrationViewModel: EmailRegistrationViewModelProtocol {
     var image: UIImage?
     var message: String
     var agreements: String
+    var state = PassthroughSubject<EmailRegistrationViewController.State, Never>.init()
     private let repository: RegistrationUnionRepositoryProtocol
     private var currentState: State
     private let confirmTitle: String
@@ -63,14 +69,17 @@ final class EmailRegistrationViewModel: EmailRegistrationViewModelProtocol {
         self.coordinator = coordinator
     }
     
-    func viewDidLoad(_ completion: @escaping ((EmailRegistrationViewController.Content) -> ())) {
-        /// Можно переделать на реактивщину, но не хотелось тянуть зависимости
+    func viewDidLoad() {
         let content = self.makeContent()
-        completion(content)
+        self.state.send(.content(data: content))
+        let confirmContent = self.makeConfirmButton()
+        self.state.send(.confirmContent(data: confirmContent))
     }
 }
 
 extension EmailRegistrationViewModel {
+    /// Создать контент
+    /// - Returns: EmailRegistrationViewController.Content
     private func makeContent() -> EmailRegistrationViewController.Content {
         let content = EmailRegistrationViewController.Content(email: self.makeEmailContent(),
                                                               password: self.makePasswordContent(),
@@ -78,6 +87,8 @@ extension EmailRegistrationViewModel {
         return content
     }
     
+    /// Создать поле Email
+    /// - Returns: InputText.Content
     private func makeEmailContent() -> InputText.Content {
         return InputText.Content(title: "Email",
                                  placeholder: "example@email.com",
@@ -98,6 +109,8 @@ extension EmailRegistrationViewModel {
                                  didEndEditing: nil)
     }
     
+    /// Создать поле Password
+    /// - Returns: InputText.Content
     private func makePasswordContent() -> InputText.Content {
         return InputText.Content(title: "Password",
                                  placeholder: "********",
@@ -118,6 +131,8 @@ extension EmailRegistrationViewModel {
                                  didEndEditing: nil)
     }
     
+    /// Создать поле Repeat Password
+    /// - Returns: InputText.Content
     private func makeConfirmPasswordContent() -> InputText.Content {
         return InputText.Content(title: "Repeat password",
                                  placeholder: "********",
@@ -138,6 +153,8 @@ extension EmailRegistrationViewModel {
                                  didEndEditing: nil)
     }
     
+    /// Создать кнопку
+    /// - Returns: UCButton.Content
     private func makeConfirmButton() -> UCButton.Content {
         let actionHandler = ActionHandler({ [weak self] in
             guard let _self = self else { return }
@@ -150,14 +167,18 @@ extension EmailRegistrationViewModel {
 }
 
 extension EmailRegistrationViewModel {
+    /// Валидация кнопки
     private func validateButton() {
         let valid = self.checkAllValid()
         if self.currentState.allValid != valid {
             self.currentState.allValid = valid
             let content = self.makeConfirmButton()
+            self.state.send(.confirmContent(data: content))
         }
     }
     
+    /// Проверка валидности всех полей
+    /// - Returns: Bool
     private func checkAllValid() -> Bool {
         let email = self.currentState.email?.count ?? 0 > 1
         let password = self.currentState.password?.count ?? 0 > 1
@@ -167,17 +188,20 @@ extension EmailRegistrationViewModel {
 }
 
 extension EmailRegistrationViewModel {
+    /// Запрос на регистрацию
     func authRequest() {
+        self.state.send(.loading(isActive: true))
         self.repository.authRequest(email: self.currentState.email ?? "",
                                     password: self.currentState.password ?? "") { [weak self] success, error in
             guard let _self = self else { return }
+            _self.state.send(.loading(isActive: false))
             if let _success = success, _success {
                 _self.coordinator.success = true
                 _self.coordinator.finishActionFlow()
-            } else if let _ = error {
-                
+            } else if let _error = error {
+                _self.state.send(.error(data: NetworkError(error: _error)))
             } else {
-                
+                _self.state.send(.error(data: NetworkError(error: nil)))
             }
         }
     }

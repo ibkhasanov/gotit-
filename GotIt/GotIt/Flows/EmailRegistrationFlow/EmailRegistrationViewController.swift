@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Bond
+import ReactiveKit
 
 extension EmailRegistrationViewController {
     /// Appearance
@@ -79,6 +81,14 @@ extension EmailRegistrationViewController {
     
     /// State
     enum State {
+        /// Контент
+        case content(data: Content)
+        /// Подтвердить
+        case confirmContent(data: UCButton.Content)
+        /// Загрузка
+        case loading(isActive: Bool)
+        /// Ошибка
+        case error(data: NetworkErrorType)
     }
     
     /// Content
@@ -216,13 +226,44 @@ final class EmailRegistrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.bindSubviews()
         self.apply(appearance: self.appearance)
-        self.viewModel.viewDidLoad { [weak self] content in
+        self.viewModel.viewDidLoad()
+    }
+    
+    /// Настройка байниднга
+    private func bindSubviews() {
+        self.viewModel.state.observeNext { [weak self] state in
             guard let _self = self else { return }
-            _self.emailTextField.content = content.email
-            _self.passwordTextField.content = content.password
-            _self.confirmPasswordTextField.content = content.confirmPassword
-        }
+            switch state {
+            case .content(let data):
+                _self.setupContentView(data)
+            case .confirmContent(let data):
+                _self.confirmButton.content = data
+            case .loading(let isActive):
+                _self.loading(isActive)
+            case .error(let data):
+                _self.showError(data)
+            }
+        }.dispose(in: self.reactive.bag)
+    }
+    
+    /// Настройка контената
+    /// - Parameter content: Content
+    private func setupContentView(_ content: Content) {
+        self.emailTextField.content = content.email
+        self.passwordTextField.content = content.password
+        self.confirmPasswordTextField.content = content.confirmPassword
+    }
+    
+    /// Показ прогресса
+    /// - Parameter active: Bool
+    private func loading(_ active: Bool) {
+    }
+    
+    /// Показ ошибки
+    /// - Parameter error: NetworkErrorType
+    private func showError(_ error: NetworkErrorType) {
     }
     
     /// Применение настроек визуализации

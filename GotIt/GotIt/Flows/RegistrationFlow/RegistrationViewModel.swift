@@ -7,6 +7,8 @@
 
 import UIKit
 import Foundation
+import Bond
+import ReactiveKit
 
 protocol RegistrationViewModelProtocol {
     /// Лого
@@ -15,8 +17,10 @@ protocol RegistrationViewModelProtocol {
     var message: String { get }
     /// Условия
     var agreements: String { get }
+    /// Состояния
+    var state: PassthroughSubject<RegistrationViewController.State, Never> { get }
     /// ViewDidLoad
-    func viewDidLoad(_ completion: @escaping ((RegistrationViewController.Content) -> ()))
+    func viewDidLoad()
 }
 
 
@@ -24,6 +28,7 @@ final class RegistrationViewModel: RegistrationViewModelProtocol {
     var image: UIImage?
     var message: String
     var agreements: String
+    var state = PassthroughSubject<RegistrationViewController.State, Never>.init()
     private let repository: RegistrationUnionRepositoryProtocol
     private let emailTitle: String
     private let appleTitle: String
@@ -60,10 +65,9 @@ final class RegistrationViewModel: RegistrationViewModelProtocol {
         self.facebookAuthWrapper = facebookAuthWrapper
     }
     
-    func viewDidLoad(_ completion: @escaping ((RegistrationViewController.Content) -> ())) {
-        /// Можно переделать на реактивщину, но не хотелось тянуть зависимости
+    func viewDidLoad() {
         let content = self.makeContent()
-        completion(content)
+        self.state.send(.content(data: content))
     }
 }
 
@@ -104,6 +108,10 @@ extension RegistrationViewModel {
     private func makeGoogleButton() -> UCBaseButton.Content {
         let actionHandler = ActionHandler({ [weak self] in
             guard let _self = self else { return }
+            _self.googleAuthWrapper.auth { [weak self] email, password in
+                guard let _self = self, let _email = email, let _password = password else { return }
+                _self.authRequest(_email, password: _password)
+            }
         })
         return UCButton.Content(title: self.googleTitle,
                                 isEnabled: true,
@@ -114,6 +122,10 @@ extension RegistrationViewModel {
     private func makeFacebookButton() -> UCBaseButton.Content {
         let actionHandler = ActionHandler({ [weak self] in
             guard let _self = self else { return }
+            _self.facebookAuthWrapper.auth { [weak self] email, password in
+                guard let _self = self, let _email = email, let _password = password else { return }
+                _self.authRequest(_email, password: _password)
+            }
         })
         return UCButton.Content(title: self.facebookTitle,
                                 isEnabled: true,
@@ -130,21 +142,23 @@ extension RegistrationViewModel: AppleAuthWrapperDelegate {
         if let _email = email, let _password = password {
             self.authRequest(_email, password: _password)
         } else {
-            /// показ ошибки
+            self.state.send(.error(data: NetworkError(error: nil)))
         }
     }
     
     func authRequest(_ email: String, password: String) {
+        self.state.send(.loading(isActive: true))
         self.repository.authRequest(email: email,
                                     password: password) { [weak self] success, error in
             guard let _self = self else { return }
+            _self.state.send(.loading(isActive: false))
             if let _success = success, _success {
                 _self.coordinator.success = true
                 _self.coordinator.finishActionFlow()
-            } else if let _ = error {
-                
+            } else if let _error = error {
+                _self.state.send(.error(data: NetworkError(error: _error)))
             } else {
-                
+                _self.state.send(.error(data: NetworkError(error: nil)))
             }
         }
     }

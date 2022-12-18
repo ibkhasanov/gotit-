@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 protocol APIWrappersProtocol {
     func authRequest(email: String, password: String, completionHandler: @escaping ((Bool?, NSError?) -> ()))
@@ -15,6 +16,12 @@ final class FirebaseAPIWrappers: APIWrappersProtocol {
     func authRequest(email: String,
                      password: String,
                      completionHandler: @escaping ((Bool?, NSError?) -> ())) {
-        completionHandler(true, nil)
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if let _ = authResult {
+                completionHandler(true, nil)
+            } else {
+                completionHandler(false, NSError(domain: "gotit.error.com", code: 2))
+            }
+        }
     }
 }

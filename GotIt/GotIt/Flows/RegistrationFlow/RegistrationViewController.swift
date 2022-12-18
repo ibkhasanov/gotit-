@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Bond
+import ReactiveKit
 
 extension RegistrationViewController {
     /// Appearance
@@ -76,6 +78,12 @@ extension RegistrationViewController {
     
     /// State
     enum State {
+        /// Контент
+        case content(data: Content)
+        /// Загрузка
+        case loading(isActive: Bool)
+        /// Ошибка
+        case error(data: NetworkErrorType)
     }
     
     /// Content
@@ -207,20 +215,49 @@ final class RegistrationViewController: UIViewController {
                                        priority: .required)
         self.agreements.pinTop(toBottom: self.stackView,
                             spacing: layout.agreementsInsets.top)
-        
+       
         self.view = view
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.bindSubviews()
         self.apply(appearance: self.appearance)
-        self.viewModel.viewDidLoad { [weak self] content in
+        self.viewModel.viewDidLoad()
+    }
+    
+    /// Настройка байниднга
+    private func bindSubviews() {
+        self.viewModel.state.observeNext { [weak self] state in
             guard let _self = self else { return }
-            _self.emailButton.content = content.emailButton
-            _self.appleButton.content = content.appleButton
-            _self.googleButton.content = content.googleButton
-            _self.facebookButton.content = content.facebookButton
-        }
+            switch state {
+            case .content(let data):
+                _self.setupContentView(data)
+            case .loading(let isActive):
+                _self.loading(isActive)
+            case .error(let data):
+                _self.showError(data)
+            }
+        }.dispose(in: self.reactive.bag)
+    }
+    
+    /// Настройка контената
+    /// - Parameter content: Content
+    private func setupContentView(_ content: Content) {
+        self.emailButton.content = content.emailButton
+        self.appleButton.content = content.appleButton
+        self.googleButton.content = content.googleButton
+        self.facebookButton.content = content.facebookButton
+    }
+    
+    /// Показ прогресса
+    /// - Parameter active: Bool
+    private func loading(_ active: Bool) {
+    }
+    
+    /// Показ ошибки
+    /// - Parameter error: NetworkErrorType
+    private func showError(_ error: NetworkErrorType) {
     }
     
     /// Применение настроек визуализации
